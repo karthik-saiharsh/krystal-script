@@ -1,9 +1,10 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
+import java.util.List;
 
 public class KrystalScript {
     static boolean hasError = false;    
@@ -54,7 +55,14 @@ public class KrystalScript {
 
     // Handle Running the code file line by line
     public static void run(String source) {
+        Scanner scanner = new Scanner(source);
+        List<Token> tokens = scanner.scanTokens();
+        for(Token token : tokens) {
+            System.out.print(token + ", ");
+        } System.out.println();
+        
         if(hasError) System.exit(65);
+
     }
 
     /////// Error Handling ///////
